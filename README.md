@@ -1,1 +1,1 @@
- <img align="center" alt="GIF" src="./images/QIU.png" width="1200" height="100%" />
+ <img align="center" alt="PNG" src="./images/QIU.png" width="500" height="100%" />
