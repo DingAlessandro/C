@@ -8,34 +8,40 @@
 #include <fcntl.h>
 int main()
 {
-	int fd;
-    char buffer[2048]
-	if( mkfifo("fifo", 0777) == -1)
-	{	if(errno!=EEXIST)
-		{
-			printf("Errore\n");
-			return 1;
-		}		
-	}
+    int fd, n;
+    char buffer[2048];
+    if (mkfifo("fifo1", 0777) == -1)
+    {
+        if (errno != EEXIST)
+        {
+            printf("Errore\n");
+            return 1;
+        }
+    }
+    if (mkfifo("fifo2", 0777) == -1)
+    {
+        if (errno != EEXIST)
+        {
+            printf("Errore\n");
+            return 1;
+        }
+    }
+    printf("inizia a chat\n");
     int p = fork();
     do
     {
-    if(p == 0)
-    {
-    fd=open("fifo", O_WRONLY);
-    scanf("%s", buffer);
-	while(int n = write( fd, buffer, sizeof(buffer) ) != -1) 
-	{
-	}
-    }
-    else
-    {
-	fd=open("fifo", O_RDONLY);
-    while(int n = read( fd, buffer, sizeof(buffer) ) != -1) 
-	{
-    printf ("%s", buffer);
-	}
-    printf ("\n");
-    }
-    }while(strcmp(buffer, "HALT") == 0);
+        if (p == 0)
+        {
+            fd = open("fifo1", O_WRONLY);
+            scanf("%s", buffer);
+            write(fd, buffer, sizeof(buffer));
+        }
+        else
+        {
+            fd = open("fifo2", O_RDONLY);
+            read(fd, buffer, sizeof(buffer));
+            printf("%s\n", buffer);
+        }
+    } while (strcmp(buffer, "HALT") != 1);
+    return 0;
 }
