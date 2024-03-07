@@ -43,6 +43,6 @@ int main()
             printf("%s\n", buffer);
         }
     } while (strcmp(buffer, "HALT") != 1);
-    close(fd)
+    close(fd);
     return 0;
 }
