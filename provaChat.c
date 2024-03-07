@@ -35,6 +35,7 @@ int main()
             fd = open("fifo1", O_WRONLY);
             scanf("%s", buffer);
             write(fd, buffer, sizeof(buffer));
+            printf("%s\n", buffer);
         }
         else
         {
@@ -42,7 +43,7 @@ int main()
             read(fd, buffer, sizeof(buffer));
             printf("%s\n", buffer);
         }
-    } while (strcmp(buffer, "HALT") != 1);
+    } while (strcmp(buffer, "HALT") != 0);
     close(fd);
     return 0;
 }
