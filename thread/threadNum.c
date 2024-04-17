@@ -23,6 +23,6 @@ int main() {
     pthread_create(&thread2, NULL, search, (void*)&range2);
     pthread_join(thread1, NULL);
     pthread_join(thread2, NULL);
-    printf("Il numero otto si trova alla posizione: %d\n", found_index);
+    printf("Il numero otto si trova alla posizione: %d\n", position);
     return 0;
 }
