@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <pthread.h>
+#define MAXRANGE 10
 int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 int position;
 void* search(void* par) 
@@ -17,8 +18,8 @@ void* search(void* par)
 
 int main() {
     pthread_t thread1, thread2;
-    int range1[2] = {0, 4};
-    int range2[2] = {5, 9};
+    int range1[2] = {0, MAXRANGE/2-1};
+    int range2[2] = {MAXRANGE/2, MAXRANGE};
     pthread_create(&thread1, NULL, &search, (void*)&range1);
     pthread_create(&thread2, NULL, &search, (void*)&range2);
     pthread_join(thread1, NULL);
