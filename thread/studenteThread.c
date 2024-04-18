@@ -41,8 +41,8 @@ int main() {
     scanf("%s", studente.cognome);
     printf("Inserisci la media: ");
     scanf("%f", &studente.media);
-    pthread_create(&threadStampa, NULL, stampa, (void*)&studente);
-    pthread_create(&threadStampaF, NULL, stampaF, (void*)&studente);
+    pthread_create(&threadStampa, NULL, &stampa, (void*)&studente);
+    pthread_create(&threadStampaF, NULL, &stampaF, (void*)&studente);
     pthread_join(threadStampa, NULL);
     pthread_join(threadStampaF, NULL);
     return 0;
