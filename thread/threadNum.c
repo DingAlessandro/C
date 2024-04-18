@@ -4,7 +4,7 @@ int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 int position;
 void* search(void* par) 
 {
-    int* range = (int*[])par;
+    int* range = (int*)par;
     for (int i = range[0]; i < range[1]; ++i) 
     {
         if (array[i] == 8) 
