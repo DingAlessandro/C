@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 #define MAX 10
 int menu()
@@ -132,12 +130,13 @@ int main(int argc, char *argv[])
 {
     int numbers [MAX];
     int cont;
+    int num;
     int* contP = &cont;
     *contP = MAX;
     int choose;
     for (int i = 0; i < 10; i++) {
-        srand(time(NULL));
-        numbers[i] = rand() % 21;
+        printf("inserisci il %d numero\n", i + 1);
+        scanf("%d", &numbers[i]);
     }
     do {
         choose = menu();
@@ -158,13 +157,11 @@ int main(int argc, char *argv[])
             NumMod(numbers, contP, 0);
             break;
             case 6:
-            int num;
             printf("inserisci un numero\n");
             scanf("%d", &num);
             Search(numbers, contP, num);
             break;
             case 7:
-            int num;
             printf("inserisci un numero\n");
             scanf("%d", &num);
             Delete(numbers, contP, num);
