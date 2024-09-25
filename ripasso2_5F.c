@@ -42,11 +42,10 @@ void doppie(char stringa[])
 {
     int t = 0;
     char c;
-    for (int i = 0; i < strlen(stringa) - 1; i++) {
+    for (int i = 0; i < strlen(stringa); i++) {
         if(stringa[i]  == stringa[i + 1])
         {
             t = 1;
-            printf("doppia %c\n", stringa[i]);
         }
     }
     if (t == 0) {
@@ -69,8 +68,8 @@ int main(int argc, char *argv[]) {
   search(stringa, c);
   printf("pari dispari\n");
   ParDis(stringa, stringa_1, stringa_2);
-  printf("stringa1 = %s", stringa_1);
-  printf("stringa2 = %s", stringa_2);
+  printf("stringa1 = %s\n", stringa_1);
+  printf("stringa2 = %s\n", stringa_2);
   printf("doppie\n");
   doppie(stringa);
 }
