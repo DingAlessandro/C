@@ -30,13 +30,17 @@ void search(char stringa[], char c) {
   }
 }
 void ParDis(char stringa[], char stringa1[], char stringa2[]) {
-  for (int i = 0; i < strlen(stringa); i++) {
-    if (stringa[i] % 2 == 0) {
-      stringa1 += stringa[i];
-    } else {
-      stringa2 += stringa[i];
+    int idx1 = 0;
+    int idx2 = 0;
+    for (int i = 0; i < strlen(stringa) - 1; i++) {
+        if (i % 2 == 0) {
+            stringa1[idx1] = stringa[i];
+            idx1++;
+        } else {
+            stringa2[idx2] = stringa[i];
+            idx2++;
+        }
     }
-  }
 }
 void doppie(char stringa[])
 {
@@ -54,8 +58,69 @@ void doppie(char stringa[])
     printf("ci sono doppie\n");
   }
 }
+void Lenght(char stringa[], char stringa2[])
+{
+  if(strlen(stringa) > strlen(stringa2))
+  {
+    printf("la prima stringa è più lunga della seconda\n");
+  }
+  else if(strlen(stringa) < strlen(stringa2))
+  {
+    printf("la seconda stringa è più lunga della prima\n");
+  }
+  else
+  {
+    printf("la lunghezza è uguale fra le due stringhe\n");
+  }
+}
+int contaVocali(char stringa[]) {
+    int count = 0;
+    for (int i = 0; i < strlen(stringa); i++) {
+        char c = toupper(stringa[i]);
+        if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+            count++;
+        }
+    }
+    return count;
+}
+
+void piuVocali(char stringa1[], char stringa2[]) {
+    int vocali1 = contaVocali(stringa1);
+    int vocali2 = contaVocali(stringa2);
+    if (vocali1 > vocali2) {
+        printf("La prima stringa contiene più vocali (%d)\n", vocali1);
+    } else if (vocali2 > vocali1) {
+        printf("La seconda stringa contiene più vocali (%d)\n", vocali2);
+    } else {
+        printf("Entrambe le stringhe contengono lo stesso numero di vocali (%d)\n", vocali1);
+    }
+}
+
+int contaConsonanti(char stringa[]) {
+    int count = 0;
+    for (int i = 0; i < strlen(stringa); i++) {
+        char c = toupper(stringa[i]);
+        if (isalpha(c) && !(c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')) {
+            count++;
+        }
+    }
+    return count;
+}
+
+void piuConsonanti(char stringa1[], char stringa2[]) {
+    int consonanti1 = contaConsonanti(stringa1);
+    int consonanti2 = contaConsonanti(stringa2);
+    if (consonanti1 > consonanti2) {
+        printf("La prima stringa contiene più consonanti (%d)\n", consonanti1);
+    } else if (consonanti2 > consonanti1) {
+        printf("La seconda stringa contiene più consonanti (%d)\n", consonanti2);
+    } else {
+        printf("Entrambe le stringhe contengono lo stesso numero di consonanti (%d)\n", consonanti1);
+    }
+}
 int main(int argc, char *argv[]) {
   char stringa[20];
+  char stringa2[20];
   char stringa_1[20] = "";
   char stringa_2[20] = "";
   char c;
@@ -72,4 +137,12 @@ int main(int argc, char *argv[]) {
   printf("stringa2 = %s\n", stringa_2);
   printf("doppie\n");
   doppie(stringa);
+  printf("inserisci la seconda stringa\n");
+  scanf("%s", stringa2);
+  printf("lunghezza\n");
+  Lenght(stringa, stringa2);
+  printf("vocali\n");
+  piuVocali(stringa, stringa2);
+  printf("consonanti\n");
+  piuConsonanti(stringa, stringa2);
 }
